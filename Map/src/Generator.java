@@ -133,10 +133,7 @@ public class Generator {
 							//Rainforest!
 							map[i][j].biome = new Biome('r', 3);
 							has_rainforest = true;
-						} else if (temp_choice == 3){
-							//Swamp
-							map[i][j].biome = new Biome('s', 3);
-						} else if (temp_choice > 3 && temp_choice < 7){
+						} else if (temp_choice > 2 && temp_choice < 7){
 							//Woods
 							map[i][j].biome = new Biome('w', 3);
 						} else {
