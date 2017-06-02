@@ -40,6 +40,9 @@ public class Generator {
 		System.out.println("Assigning biomes...");
 		Generator.gen_biomes(cells);
 		
+		System.out.println("Assigning cities...");
+		Generator.gen_cities(map, 10);
+		
 		System.out.println("Done!");
 		return cells;
 	}
@@ -53,8 +56,36 @@ public class Generator {
 	 *   Settlements less likely to be in extreme biomes
 	 *   Settlements can't be on water
 	 */
-	public static void gen_cities(Block map[][]){
+	public static void gen_cities(Block map[][], int size){
+		Random random = new Random();
+		int maxCities = size/4; //Max number of cities
+		int maxTowns = size/2; //Max number of towns
+		int maxVillages = size; //Max number of villages
+		int nCities = 0, nTowns = 0, nVillages = 0;
 		
+		for(int i=1;i<map.length-1;i++){
+			for(int j=1;j<map[0].length-1;j++){
+				
+				if(map[i][j].hasRiver()){
+					//River Blocks
+					int riverChoice = random.nextInt(10); //Good probability?
+					if(riverChoice == 0){
+						//City
+						if(nCities < maxCities){
+							map[i][j].city = new City('c'); //Worry about naming later
+							nCities++;
+						}
+					} else if (riverChoice == 1){
+						//Town
+						if(nTowns < maxTowns){
+							map[i][j].city = new City('t'); //Worry about naming later
+							nTowns++;
+						}
+					}
+				}
+				
+			}
+		}
 	}
 	
 	//==Biomes=============================================================================================================================

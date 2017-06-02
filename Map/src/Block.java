@@ -36,4 +36,8 @@ public class Block {
 	public boolean hasRiver(){
 		return river;
 	}
+	
+	public boolean hasCity(){
+		return city != null;
+	}
 }

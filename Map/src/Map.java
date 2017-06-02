@@ -1,8 +1,8 @@
 //Generally for testing for now
 public class Map {
 	
-	/* WHAT I FINISHED RECENTLY: filled out the biomes
-	 * WHAT I WANT TO DO: Assign cities, towns
+	/* WHAT I FINISHED RECENTLY: Started city generation
+	 * WHAT I WANT TO DO: Finish planning out city generation, since I'm winging it right now
 	 *                    Figure out the borders of biomes
 	 *                    Assign names to biomes
 	 *                    Make it so that cold biomes don't go too far south/vice versa
@@ -61,6 +61,14 @@ public class Map {
 	private static void test_view(Block map[][]){
 		for(int i=0;i<map.length;i++){
 			for(int j=0;j<map[0].length;j++){
+				
+				//Cities
+				if(map[i][j].hasCity()){
+					if(map[i][j].city.type == 'c') System.out.format("@ ");
+					else if (map[i][j].city.type == 't') System.out.format("* ");
+					else if (map[i][j].city.type == 'v') System.out.format(". "); //maybe not this one
+					continue;
+				}
 				
 				//Mountains
 				if (map[i][j].altitude > Generator.PEAK_LEVEL){ 
